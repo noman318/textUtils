@@ -1,17 +1,17 @@
 version: 0.2
 phases:
   install:
-  runtime-versions:
+    runtime-versions:
       nodejs: 18
-  commands:
-    - npm install
+    commands:
+      - npm install
   build:
     commands:
       - npm run build
-  artifacts:
-    files:
-      - "**/*"
-    base-directory: build
   post_build:
-  commands:
-    - aws s3 sync build/ s3://code-deployment-bucket-dilshad --delete
+    commands:
+      - aws s3 sync build/ s3://code-deployment-bucket-dilshad --delete
+artifacts:
+  files:
+    - "**/*"
+  base-directory: build
