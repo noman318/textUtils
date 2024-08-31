@@ -10,3 +10,6 @@ phases:
     files:
       - "**/*"
     base-directory: build
+  post_build:
+  commands:
+    - aws s3 sync build/ s3://code-deployment-bucket-dilshad --delete
